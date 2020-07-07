@@ -2,7 +2,7 @@
 /*
 Plugin Name: Cavalcade Jobs List
 Plugin URI: https://www.wordpress.org
-Description: Cavalcade List Table Class
+Description: Cavalcade List Admin Interface
 Version: 1.0
 Author: Nandakrishnan U
 Author URI:  https://sportzinteractive.net
