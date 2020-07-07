@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Cavalcade Jobs List
 Plugin URI: https://www.wordpress.org
