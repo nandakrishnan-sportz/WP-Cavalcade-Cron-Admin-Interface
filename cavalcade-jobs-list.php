@@ -21,7 +21,7 @@ class Jobs_Admin_List extends WP_List_Table {
 			'ajax'     => false
 		] );
 		$cavalcade_list_screen      = get_current_screen();
-		$this->cavalcade_page_slug = esc_attr( $_REQUEST['page'] );
+		$this->cavalcade_page_slug  = ( isset( $_REQUEST['page'] ) ) ? esc_attr( $_REQUEST['page'] ) : '';
 		$this->logs_nonce           = $cavalcade_utilities->__n( 'logs_nonce' );
 		$this->jobs_nonce           = $cavalcade_utilities->__n( 'jobs_nonce' ); 
 		$this->manual_run_nonce     = $cavalcade_utilities->__n( 'manual_run_nonce' );
