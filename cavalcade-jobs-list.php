@@ -38,7 +38,7 @@ class Jobs_Admin_List extends WP_List_Table {
 	 */
 	public static function record_count() {
 		global $wpdb, $cavalcade_utilities;
-    	return $wpdb->get_var( $cavalcade_utilities->__sql( 'count(*)' ) );
+    		return $wpdb->get_var( $cavalcade_utilities->__sql( 'count(*)' ) );
 	}
 	/**
 	 * Get Records
@@ -53,15 +53,15 @@ class Jobs_Admin_List extends WP_List_Table {
 	 */
 	function get_columns() {
 		$columns = [
-            'cb'       => '<input type="checkbox" />',
-            'id'       => __( 'Job', 'cavalcade' ),
-			'hook'     => __( 'Hook', 'cavalcade' ),
-			'schedule' => __( 'Schedule', 'cavalcade' ),
-            'status'   => __( 'Status', 'cavalcade' ),
-            'args'     => __( 'Arguments', 'cavalcade' ),
-            'start'    => __( 'Start (UTC)', 'cavalcade' ),
-            'nextrun'  => __( 'Next Run (UTC)', 'cavalcade' ),
-            'logs'     => __( 'Logs', 'cavalcade' ),
+            		'cb'       => '<input type="checkbox" />',
+            		'id'       => __( 'Job', 'cavalcade' ),
+	    		'hook'     => __( 'Hook', 'cavalcade' ),
+	    		'schedule' => __( 'Schedule', 'cavalcade' ),
+            		'status'   => __( 'Status', 'cavalcade' ),
+            		'args'     => __( 'Arguments', 'cavalcade' ),
+            		'start'    => __( 'Start (UTC)', 'cavalcade' ),
+            		'nextrun'  => __( 'Next Run (UTC)', 'cavalcade' ),
+            		'logs'     => __( 'Logs', 'cavalcade' ),
 		];
 		return $columns;
 	}
@@ -70,14 +70,14 @@ class Jobs_Admin_List extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		$sortable_columns = [
-            'id'     => [ 'id', true ],
+			'id'       => [ 'id', true ],
 			'hook'     => [ 'hook', true ],
-            'status'   => [ 'status', false ],
-            'schedule' => [ 'schedule', false ],
-            'start'    => [ 'start', false ],
-            'nextrun'  => [ 'nextrun', false ],
-        ];
-		return $sortable_columns;
+			'status'   => [ 'status', false ],
+			'schedule' => [ 'schedule', false ],
+			'start'    => [ 'start', false ],
+			'nextrun'  => [ 'nextrun', false ],
+            	];
+	    	return $sortable_columns;
 	}
 	/**
 	 * Get Bulk Actions
@@ -116,16 +116,16 @@ class Jobs_Admin_List extends WP_List_Table {
 		switch ( $column_name ) {
 			case 'id':
 				return $this->column_name( $item );
-            case 'hook':
+            		case 'hook':
 			case 'status':
-                return $item[ $column_name ];
-            case 'schedule':
-                return empty( $item[ $column_name ] ) ? 'single': $item[ $column_name ];
-            case 'args':
-                $unserialized = unserialize( $item[ $column_name ] );
-                return !empty( $unserialized ) ? implode( ',', $unserialized ) : '---';
-            case 'logs':
-                return sprintf( '<a href="%s?TB_iframe=true&width=400&height=200" class="thickbox button">View Log</a>', $this->logs_popup_url . $item['id'] );
+                		return $item[ $column_name ];
+            		case 'schedule':
+                		return empty( $item[ $column_name ] ) ? 'single': $item[ $column_name ];
+            		case 'args':
+                		$unserialized = unserialize( $item[ $column_name ] );
+                		return !empty( $unserialized ) ? implode( ',', $unserialized ) : '---';
+            		case 'logs':
+                		return sprintf( '<a href="%s?TB_iframe=true&width=400&height=200" class="thickbox button">View Log</a>', $this->logs_popup_url . $item['id'] );
 			default:
 				return $item[ $column_name ];
 		}
@@ -143,8 +143,8 @@ class Jobs_Admin_List extends WP_List_Table {
 	 */
 	function column_name( $item ) {
 		global $cavalcade_utilities;
-		$title = '<strong>JOB ID : ' . $item['id'] . '</strong>';
-		$jobid = absint( $item['id'] );
+		$title   = '<strong>JOB ID : ' . $item['id'] . '</strong>';
+		$jobid   = absint( $item['id'] );
 		$actions = [
 			'delete'     => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'Are you sure?\')" >Delete Now</a>', $this->cavalcade_page_slug, 'delete-now', $jobid, $this->delete_nonce ),
 			'manual-run' => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'Are you sure?\')" >Run in ' . $cavalcade_utilities->manual_latency . 'sec </a>', $this->cavalcade_page_slug, 'manual-run', $jobid, $this->manual_run_nonce ),
