@@ -26,15 +26,15 @@ class Cavalcade_List_Plugin {
 	 * Plugin settings page
 	 */
 	public function plugin_settings_page() {
-        add_thickbox();
+        	add_thickbox();
 		?>
 		<div class="wrap">
 			<h2>Cavalcade Jobs</h2>
 			<div id="poststuff">
 				<div id="post-body">
 					<div id="post-body-content">
-    					<div class="meta-box-sortables ui-sortable">
-                            <?php $this->jobs_admin_list->filters();?>
+    						<div class="meta-box-sortables ui-sortable">
+                            				<?php $this->jobs_admin_list->filters();?>
 							<form method="post">
 								<?php
 								$this->jobs_admin_list->prepare_items();
@@ -59,7 +59,7 @@ class Cavalcade_List_Plugin {
 			'option'  => 'jobs_per_page'
 		];
 		add_screen_option( $option, $args );
-        $this->jobs_admin_list = new Jobs_Admin_List();
+        	$this->jobs_admin_list = new Jobs_Admin_List();
 	}
 	/** Singleton instance */
 	public static function get_instance() {
