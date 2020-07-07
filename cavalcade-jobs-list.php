@@ -3,7 +3,7 @@
  * Cavalcade Jobs List Class
  */
 class Jobs_Admin_List extends WP_List_Table {
-    public $cavalcade_per_page = 20;
+    	public $cavalcade_per_page = 20;
 	public $logs_nonce;
 	public $jobs_nonce;
 	public $manual_run_nonce;
