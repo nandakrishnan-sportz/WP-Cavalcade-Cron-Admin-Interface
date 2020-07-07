@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Cavalcade Logs List Class
  */
@@ -14,7 +13,7 @@ class Cavalcade_Utilities {
     public function __construct(){
         $this->cavalcade_jobs_table = $this->get_jobs_table();
         $this->cavalcade_logs_table = $this->get_logs_table();
-        $this->cavalcade_page_slug  = esc_attr( $_REQUEST['page'] );
+        $this->cavalcade_page_slug  = ( isset( $_REQUEST['page'] ) ) ? esc_attr( $_REQUEST['page'] ) : '';
         add_action( 'cavalcade_manual_job_re_run', [ $this, '__manual_run' ] );
         add_action('wp_ajax_' . $this->logs_ajax_action, [ $this, '__job_logs_by_id' ] );
         add_action('wp_ajax_nopriv_' . $this->logs_ajax_action, [ $this, '__job_logs_by_id' ] );
