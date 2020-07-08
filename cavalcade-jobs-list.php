@@ -123,7 +123,7 @@ class Jobs_Admin_List extends WP_List_Table {
                 		return empty( $item[ $column_name ] ) ? 'single': $item[ $column_name ];
             		case 'args':
                 		$unserialized = unserialize( $item[ $column_name ] );
-                		return !empty( $unserialized ) ? implode( ',', $unserialized ) : '---';
+                		return ( !empty( $unserialized ) && is_array( $unserialized ) ) ? wp_json_encode( $unserialized ) : '---';
             		case 'logs':
                 		return sprintf( '<a href="%s?TB_iframe=true&width=400&height=200" class="thickbox button">View Log</a>', $this->logs_popup_url . $item['id'] );
 			default:
