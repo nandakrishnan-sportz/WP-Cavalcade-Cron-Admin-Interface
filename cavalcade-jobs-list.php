@@ -145,10 +145,15 @@ class Jobs_Admin_List extends WP_List_Table {
 		global $cavalcade_utilities;
 		$title   = '<strong>JOB ID : ' . $item['id'] . '</strong>';
 		$jobid   = absint( $item['id'] );
+		$messages = [
+			'delete'     => 'This job will be deleted permanently, Continue?',
+			'manual-run' => 'This job will be executed within ' . $cavalcade_utilities->manual_latency . 'seconds. Continue?',
+			'reschedule' => 'This job will be skipped for the next run and rescheduled after. Continue?',
+		];
 		$actions = [
-			'delete'     => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'Are you sure?\')" >Delete Now</a>', $this->cavalcade_page_slug, 'delete-now', $jobid, $this->delete_nonce ),
-			'manual-run' => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'Are you sure?\')" >Run in ' . $cavalcade_utilities->manual_latency . 'sec </a>', $this->cavalcade_page_slug, 'manual-run', $jobid, $this->manual_run_nonce ),
-			'reschedule' => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'Are you sure?\')" >Reschedule</a>', $this->cavalcade_page_slug, 'reschedule', $jobid, $this->reschedule_nonce )
+			'delete'     => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'%s\')" >Delete Now</a>', $this->cavalcade_page_slug, 'delete-now', $jobid, $this->delete_nonce, $messages['delete'] ),
+			'manual-run' => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'%s\')" >Run in ' . $cavalcade_utilities->manual_latency . 'sec </a>', $this->cavalcade_page_slug, 'manual-run', $jobid, $this->manual_run_nonce, $messages['manual-run'] ),
+			'reschedule' => sprintf( '<a href="?page=%s&action=%s&job=%s&_wpnonce=%s" onclick="return confirm(\'%s\')" >Reschedule</a>', $this->cavalcade_page_slug, 'reschedule', $jobid, $this->reschedule_nonce, $messages['reschedule'] )
 		];
 		return $title . $this->row_actions( $actions );
 	}
