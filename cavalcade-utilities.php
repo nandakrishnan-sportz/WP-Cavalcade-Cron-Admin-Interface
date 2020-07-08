@@ -128,7 +128,7 @@ class Cavalcade_Utilities {
         }
         echo sprintf( '<h3 class="h3-jobs">CAVALCADE JOB LOGS FOR ID : %d</h3>', $job_id );
         global $wpdb;
-        $result = $wpdb->get_results("SELECT * FROM {$wpdb->base_prefix}cavalcade_logs where job = {$job_id} limit {$this->logs_count} ");
+        $result = $wpdb->get_results("SELECT * FROM {$wpdb->base_prefix}cavalcade_logs where job = {$job_id} ORDER BY id DESC limit {$this->logs_count} ");
         if( ! is_wp_error( $result ) && is_array( $result ) && sizeof( $result ) >= 1 ) {
             echo '<style>.h3-jobs{text-align:center;}.cc_logs{width: 100%;padding: 10px;text-transform: capitalize;border-bottom: 1px solid #d2caca;margin: 5px auto;}</style>';
             foreach( $result as $log ) {
