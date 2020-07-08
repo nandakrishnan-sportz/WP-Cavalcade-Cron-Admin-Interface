@@ -146,7 +146,7 @@ class Cavalcade_Utilities {
         global $wpdb;
         $job = $this->__get_job_by_id( $job );
         if( $job ) {
-            $nextrun = date( 'Y-m-d H:i:s', strtotime( $job->nextrun ) + $this->manual_latency );
+            $nextrun = date( 'Y-m-d H:i:s', time() + $this->manual_latency );
             $status  = 'waiting';
             $wpdb->update(  $wpdb->base_prefix . 'cavalcade_jobs', [
                 'status'  => $status, 
